@@ -10,6 +10,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
   - ![Metric Beat](/Ansible/Metric_Beat.yml)
   - ![My Playlist](/Ansible/my_playlist.yml)
   - ![ELK Deployment](/Ansible/install-elk.yml)
+  - ![Filebeat Config](Ansible/filebeat-config.yml)
 
 This document contains the following details:
 - Description of the Topology
@@ -94,7 +95,26 @@ These Beats allow us to collect the following information from each machine:
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
+- Copy all the .yml files to your '/etc/ansible' directory to your docker asible container.
+- The following edits to the following files will need to be made:
+  - hosts file;
+    - Ensure your hosts file has two collections that match your network configuration. [Wevservers] <-- Shouild be ip of your web servers. [Elk] <-- Should be ip of your Elk container.
+    ![Hosts file](Diagrams/hosts_file.png)
+
+  - (Ansible/filebeat-config.yml) 
+    - Under ElasticSearch; Change to your Elk container IP Address
+    ![Elastic Search](Diagrams/file-beat-config_elasticsearch.png)
+    - Under Kibana: Change to your Elk container IP Address
+    ![Elastic Search](Diagrams/file-beat-config_kibana.png)
+
+  - (Ansible/metricbeat_config.yml)
+    - Under ElasticSearch; Change to your Elk container IP Address
+    ![Elastic Search](Diagrams/metric-beat-config_elasticsearch.png)
+    - Under kibana; Change to your Elk container IP Address
+    ![Elastic Search](Diagrams/metric-beat-config_elasticsearch.png)
+
+  
+  - 
 - Update the _____ file to include...
 - Run the playbook, and navigate to ____ to check that the installation worked as expected.
 
