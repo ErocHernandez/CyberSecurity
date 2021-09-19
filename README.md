@@ -112,15 +112,13 @@ SSH into the control node and follow the steps below:
     ![Elastic Search](Diagrams/metric-beat-config_elasticsearch.png)
     - Under kibana; Change to your Elk container IP Address
     ![Elastic Search](Diagrams/metric-beat-config_elasticsearch.png)
-
+ 
+ ********************************************************************
+ *                        Please Note                               *
+ * Ansible.config will need to be modified to change the default    *
+ * user to your username.                                           *
+ * Search for: remote_user                                          *
+ ********************************************************************
   
-  - 
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
-
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
-
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+- Once the ansible playbooks have ran successfully and network security rules have been properly configured, you can access ElK using your exteranal IP. Example: http://<your Elk public ip>/apps/kibana.
+- Web servers will be accessable via public load balancer ip. Example http://<your public load balancer ip>/setup.php
